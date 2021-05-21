@@ -73,3 +73,39 @@ We define a password for the raspberry administrator:
 ```shell
 $> sudo passwd root
 ```
+Then we connect as root with the command:
+```shell
+$> su
+```
+Check that the /root/.ssh folder exists (if it does not exist: mkdir /root/.ssh)
+Give it these rights:
+```shell
+$> chmod 700 /root/.ssh
+```
+Then return to $ HOME / .ssh
+```shell
+$> cd $HOME/.ssh
+```
+Upload the authorized_keys and id_rsa files to /root/.ssh
+```shell
+$> cp authorized_keys /root/.ssh
+$> cp id_rsa /root/.ssh
+```
+Finally we restart ssh:
+```shell
+$> sudo service ssh restart
+```
+
+# A synthesizer to vocalize errors
+Installation of a speech synthesizer that reads errors, for example if the correspondent is turned off:
+```shell
+$> sudo apt-get install libttspico-utils
+```
+test creating the .wav file and playing the file:
+```shell
+$> pico2wave -l fr-FR -w fichier.wav "Bienvenue en cette belle journée!"
+$> aplay fichier.wav
+```
+
+# Configure the microphone
+
