@@ -56,7 +56,7 @@ We must now add the public key to the authorized_keys file located in the /home/
 ```shell
 $> cat id_rsa.pub | ssh <nom_utilisateur>@<adresse_ip> 'cat >> ~/.ssh/authorized_keys'
 ```
-The line is appended to the ~ / .ssh / authorized_keys file on the server in the form: ssh-rsa <encrypted-key> comment
+The line is appended to the ~ / .ssh / authorized_keys file on the server in the form: ssh-rsa encrypted-key> comment
 
 We will finish with the modification of the configuration of the SSH service: (therefore locally not on the server ..)
 ```shell
