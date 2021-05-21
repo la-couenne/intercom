@@ -150,4 +150,12 @@ Here is one last little thing to pay attention:
 if you use a jack for sound like me, we put the audio output of the raspberry in analog and not on HDMI (right button on the HP next to the clock)
 
 # Boot directly from a hard drive
+![3-ddur](https://user-images.githubusercontent.com/38251711/119107104-3d4ad900-ba1f-11eb-8121-92210eeb7dfc.png)
+I personally have used a pidrive, but it is possible to use an old hard drive or even a USB key, here is a good tutorial:
+https://www.framboise314.fr/boot-simplifie-sur-usb-avec-les-raspberry-pi-1-2-et-3
+
+# Sources
+alsa: https://wiki.debian.org/fr/ALSA
+voice synthesizer: https://www.framboise314.fr/donnez-la-parole-a-votre-raspberry-pi/
+ssh connection: https://doc.ubuntu-fr.org/ssh
 
