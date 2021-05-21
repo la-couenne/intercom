@@ -108,4 +108,46 @@ $> aplay fichier.wav
 ```
 
 # Configure the microphone
+![2-rasp](https://user-images.githubusercontent.com/38251711/119105932-1b048b80-ba1e-11eb-9e6d-55615022851d.png)
+check that the microphone is seen on the USB port:
+```shell
+$> lsusb
+```
+which gives for example: Bus 001 Device 008: ID 0d8c:0139 C-Media Electronics, Inc.
+
+We can verify that the user pi is in the audio group:
+```shell
+$> groups pi
+```
+If not, add it with:
+```shell
+$> sudo usermod -a -G audio pi
+```
+
+ On va configurer le port du microphone et la carte audio:
+```shell
+$> alsamixer
+```
+
+Gives a setting diagram, use F6 to select the sound card:
+bcm2835 is the raspberry (for the jack & hdmi output)
+and for the mic input: USB PnP sound device with the card number: 1
+Now on the diagram we can raise the sound of the HP and the mic at least to 50%
+On the far right we have the automatic gain control by pressing the M key (I leave it auto)
+
+Finally save these settings:
+```shell
+$> sudo alsactl store 1
+```
+1 is your card number.
+To test the recording: a 4-second 8-bit sound (coming from device 1: -D plughw: 1) and you play it with aplay:
+```shell
+$> arecord -D plughw:1 -d 4 test.wav
+$> aplay test.wav
+```
+
+Here is one last little thing to pay attention:
+if you use a jack for sound like me, we put the audio output of the raspberry in analog and not on HDMI (right button on the HP next to the clock)
+
+# Boot directly from a hard drive
 
