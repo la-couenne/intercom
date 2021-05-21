@@ -329,10 +329,15 @@ https://www.framboise314.fr/boot-simplifie-sur-usb-avec-les-raspberry-pi-1-2-et-
 
 # Sources
 alsa: https://wiki.debian.org/fr/ALSA
+
 voice synthesizer: https://www.framboise314.fr/donnez-la-parole-a-votre-raspberry-pi/
+
 ssh connection: https://doc.ubuntu-fr.org/ssh
+
 scp without password: https://geekeries.org/2016/10/transferts-scp-sans-mot-de-passe
+
 amplification module: https://www.adafruit.com/product/1752
+
 
 # enjoy :-)
 
