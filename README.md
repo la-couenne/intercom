@@ -21,3 +21,55 @@ I searched a lot for a way to stream audio over wifi, and finally I carried out 
 1 bakelite plate
 
 # The electronic diagram
+![schema_600px](https://user-images.githubusercontent.com/38251711/119102653-8b111280-ba1a-11eb-88a5-2f3cf12088b1.png)
+
+# System configuration
+We change the names of the raspberries to “rasptalk-a”, “rasptalk-b”, “rasptalk-c” …
+```shell
+$> sudo nano /etc/hostname -> modifier le nom
+$> sudo nano /etc/hosts -> modifier le nom (tout en bas)
+```
+
+# Setting up an SSH certificate
+To be able to use an ssh connection without having to enter a password, we will create a certificate in the form of a private key, a public key.
+If it does not exist, create the .ssh directory
+```shell
+$> mkdir $HOME/.ssh
+$> sudo chmod 700 $HOME/.ssh
+```
+Go to the .ssh directory
+```shell
+$> cd $HOME/.ssh
+```
+We will generate our keys, -b 4096 increases the security of your key instead of 2096 by default, the -C “comment” will be used to locate the public key among others in the ~ / .ssh / authorized_keys file which we will create later on the server.
+```shell
+$> ssh-keygen -b 4096 -C "pi@rasptalk-a"
+```
+The command asks us to indicate the name of the file in which to save the keys:
+We just do [ENTER] so that the silk key generated and placed in the .ssh / id_rsa folder
+Then we leave the passphrase empty so that he does not ask for it
+Here we are with a private key (id_rsa) and a public key (id_rsa.pub)
+
+The private key must be kept in the .ssh directory and the public key is the one to put on the server that wants to connect.
+
+We must now add the public key to the authorized_keys file located in the /home/user/.ssh folder of the server:
+```shell
+$> cat id_rsa.pub | ssh <nom_utilisateur>@<adresse_ip> 'cat >> ~/.ssh/authorized_keys'
+```
+The line is appended to the ~ / .ssh / authorized_keys file on the server in the form: ssh-rsa <encrypted-key> comment
+
+We will finish with the modification of the configuration of the SSH service: (therefore locally not on the server ..)
+```shell
+$> sudo nano /etc/ssh/sshd_config
+```
+We uncomment the following lines:
+```shell
+PubkeyAuthentication yes
+RSAAuthentication yes
+AuthorizedKeysFile %h/.ssh/authorized_keys
+```
+Now one last thing, if we want a script executed by root to also be able to use the ssh login without a password:
+We define a password for the raspberry administrator:
+```shell
+$> sudo passwd root
+```
