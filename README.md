@@ -280,6 +280,7 @@ $> aplay fichier.wav
 
 # Configure the microphone
 ![2-rasp](https://user-images.githubusercontent.com/38251711/119105932-1b048b80-ba1e-11eb-9e6d-55615022851d.png)
+
 check that the microphone is seen on the USB port:
 ```shell
 $> lsusb
@@ -322,6 +323,7 @@ if you use a jack for sound like me, we put the audio output of the raspberry in
 
 # Boot directly from a hard drive
 ![3-ddur](https://user-images.githubusercontent.com/38251711/119107104-3d4ad900-ba1f-11eb-8121-92210eeb7dfc.png)
+
 I personally have used a pidrive, but it is possible to use an old hard drive or even a USB key, here is a good tutorial:
 https://www.framboise314.fr/boot-simplifie-sur-usb-avec-les-raspberry-pi-1-2-et-3
 
